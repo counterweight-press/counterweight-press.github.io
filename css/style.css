@@ -1,0 +1,752 @@
+/* ============================================
+   COUNTERWEIGHT — Shared Styles
+   ============================================ */
+
+:root {
+  --ink: #1a1a1a;
+  --ink-light: #333;
+  --paper: #f5f0e8;
+  --paper-dark: #e8e0d0;
+  --accent: #8b2500;
+  --accent-light: #c4856c;
+  --footnote: #555;
+  --rule: #c4a882;
+  --rule-light: #d4c8b2;
+  --margin: clamp(1.5rem, 5vw, 4rem);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-light);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+a:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+/* ============================================
+   SITE HEADER
+   ============================================ */
+
+.site-header {
+  padding: clamp(2rem, 6vw, 4rem) var(--margin) clamp(1.5rem, 4vw, 2.5rem);
+  max-width: 780px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* Remove header border when followed by article hero image */
+.site-header:has(+ .article-header) {
+  border-bottom: none;
+}
+
+.site-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.site-title a {
+  color: inherit;
+  border: none;
+}
+
+.site-title a:hover {
+  color: var(--accent);
+}
+
+.site-tagline {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--footnote);
+  margin-top: 0.4rem;
+}
+
+.site-nav {
+  margin-top: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.site-nav a {
+  color: var(--footnote);
+  border: none;
+  margin-right: 1.5rem;
+}
+
+.site-nav a:hover {
+  color: var(--accent);
+}
+
+/* ============================================
+   HOMEPAGE — ARTICLE FEED
+   ============================================ */
+
+.feed {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3rem) var(--margin);
+}
+
+.feed-item {
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--rule-light);
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.feed-image-link {
+  flex-shrink: 0;
+  border: none;
+  display: block;
+}
+
+.feed-image {
+  width: 180px;
+  height: auto;
+  border: 1px solid var(--rule-light);
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.feed-image-link:hover .feed-image {
+  opacity: 1;
+}
+
+.feed-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.feed-item:first-child {
+  padding-top: 0;
+}
+
+.feed-item:last-child {
+  border-bottom: none;
+}
+
+.feed-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.feed-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.feed-title a {
+  color: inherit;
+  border: none;
+}
+
+.feed-title a:hover {
+  color: var(--accent);
+}
+
+.feed-subtitle {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--footnote);
+  line-height: 1.5;
+}
+
+/* ============================================
+   ARTICLE PAGE
+   ============================================ */
+
+.article-header {
+  padding: clamp(4rem, 12vw, 8rem) var(--margin) clamp(3rem, 8vw, 5rem);
+  max-width: 100%;
+  text-align: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.article-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(245, 240, 232, 0.85) 0%,
+    rgba(245, 240, 232, 0.9) 20%,
+    rgba(245, 240, 232, 0.9) 90%,
+    rgba(245, 240, 232, 1) 100%
+  );
+  z-index: 1;
+}
+
+.article-header-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.article-header-rule {
+  border: none;
+  height: 3px;
+  background: var(--accent);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.article-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.article-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.article-subtitle {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: var(--footnote);
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.article-body {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 var(--margin) 3rem;
+}
+
+.article-body p {
+  margin-bottom: 1.4rem;
+  text-align: left;
+  font-size: 1rem;
+  hanging-punctuation: first;
+}
+
+.article-body p.first::first-letter {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.8rem;
+  float: left;
+  line-height: 0.8;
+  padding-right: 0.12em;
+  padding-top: 0.08em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.section-break {
+  text-align: center;
+  margin: 2.5rem 0;
+  color: var(--rule);
+  font-size: 1.4rem;
+  letter-spacing: 0.5em;
+  user-select: none;
+}
+
+em { font-style: italic; }
+
+strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pullquote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.55;
+  color: var(--accent);
+  border-left: 3px solid var(--accent);
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  margin: 2.5rem 0 2.5rem -0.5rem;
+}
+
+/* ============================================
+   FOOTNOTES
+   ============================================ */
+
+sup.fn-ref {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--accent);
+  cursor: pointer;
+  vertical-align: super;
+  line-height: 0;
+  padding: 0 0.15em;
+  transition: color 0.2s;
+}
+
+sup.fn-ref:hover { color: var(--ink); }
+
+sup.fn-ref a {
+  color: inherit;
+  text-decoration: none;
+  border: none;
+}
+
+.footnotes-section {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 var(--margin) 4rem;
+}
+
+.footnotes-rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin-bottom: 2rem;
+  width: 40%;
+}
+
+.footnotes-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.footnote {
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: var(--footnote);
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.footnote .fn-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+}
+
+.footnote a {
+  color: var(--accent);
+  word-break: break-all;
+}
+
+/* ============================================
+   MANIFESTO / ABOUT PAGE
+   ============================================ */
+
+.manifesto {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) var(--margin) 4rem;
+}
+
+.manifesto h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--ink);
+}
+
+.manifesto p {
+  margin-bottom: 1.4rem;
+  font-size: 1rem;
+}
+
+.manifesto p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   COLOPHON / FOOTER
+   ============================================ */
+
+.colophon {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 2rem var(--margin) 4rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.78rem;
+  color: var(--footnote);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.site-footer {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem var(--margin) 3rem;
+  border-top: 1px solid var(--rule);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--footnote);
+  text-transform: uppercase;
+}
+
+.site-footer a {
+  color: var(--footnote);
+  border: none;
+}
+
+.site-footer a:hover {
+  color: var(--accent);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 600px) {
+  html { font-size: 16px; }
+  
+  .article-body p.first::first-letter {
+    font-size: 3rem;
+  }
+  
+  .pullquote {
+    font-size: 1.15rem;
+    margin-left: 0;
+  }
+
+  .feed-item {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .feed-image {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   SUBTLE ANIMATIONS
+   ============================================ */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.site-header,
+.feed,
+.article-header,
+.article-body,
+.manifesto,
+.footnotes-section,
+.colophon {
+  animation: fadeUp 0.6s ease-out both;
+}
+
+.feed { animation-delay: 0.1s; }
+.article-body { animation-delay: 0.15s; }
+.footnotes-section { animation-delay: 0.2s; }
+.colophon { animation-delay: 0.25s; }
+
+/* ============================================
+   COMMENTS SECTION
+   ============================================ */
+
+.comments-section {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 var(--margin) 3rem;
+}
+
+.comments-rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin-bottom: 2rem;
+  width: 40%;
+}
+
+.comments-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.comment {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.comment:last-of-type {
+  border-bottom: none;
+}
+
+.comment-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--footnote);
+  margin-bottom: 0.75rem;
+}
+
+.comment-author {
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.comment-date {
+  color: var(--footnote);
+}
+
+.comment-date::before {
+  content: '·';
+  margin: 0 0.5rem;
+}
+
+.comment-body {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ink-light);
+}
+
+.comment-body p {
+  margin-bottom: 0.8rem;
+}
+
+.comment-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* No comments yet */
+.comments-empty {
+  font-style: italic;
+  color: var(--footnote);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   COMMENT FORM
+   ============================================ */
+
+.comment-form-section {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 var(--margin) 4rem;
+}
+
+.comment-form-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-field label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--footnote);
+}
+
+.form-field input,
+.form-field textarea {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 0;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff;
+}
+
+.form-field textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--rule);
+  font-style: italic;
+}
+
+.form-submit {
+  align-self: flex-start;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.form-submit:hover {
+  background: var(--accent);
+}
+
+.form-note {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--footnote);
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   TL;DR STYLES
+   ============================================ */
+
+.tldr-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+
+/* Homepage TL;DR */
+.feed-tldr {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-light);
+  margin-top: 0.6rem;
+}
+
+/* Article page TL;DR (collapsible) */
+.article-tldr {
+  max-width: 660px;
+  margin: 0 auto 2rem;
+  padding: 0 var(--margin);
+}
+
+.article-tldr summary.tldr-label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  list-style: none;
+  user-select: none;
+}
+
+.article-tldr summary.tldr-label::-webkit-details-marker { display: none; }
+
+.article-tldr summary.tldr-label::after {
+  content: '▶';
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.65rem;
+  color: var(--accent);
+  transition: transform 0.25s ease;
+  vertical-align: middle;
+}
+
+.article-tldr[open] summary.tldr-label::after {
+  transform: rotate(90deg);
+}
+
+.article-tldr p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-light);
+  margin: 0.6rem 0 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--paper-dark);
+  border-left: 3px solid var(--accent);
+  animation: fadeUp 0.25s ease-out both;
+}
+
+/* ============================================
+   LARGE SCREENS
+   ============================================ */
+
+@media (min-width: 1200px) {
+  .site-header { max-width: 900px; }
+  .feed { max-width: 900px; }
+  .article-header-content { max-width: 900px; }
+  .article-body { max-width: 760px; }
+  .article-tldr { max-width: 760px; }
+  .footnotes-section { max-width: 760px; }
+  .colophon { max-width: 760px; }
+  .comments-section { max-width: 760px; }
+  .comment-form-section { max-width: 760px; }
+  .manifesto { max-width: 700px; }
+}

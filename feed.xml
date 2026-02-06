@@ -1,0 +1,28 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>{{ site.title }}</title>
+    <description>{{ site.description }}</description>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <atom:link href="{{ site.url }}{{ site.baseurl }}/feed.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    {% for article in site.articles reversed %}
+    <item>
+      <title>{{ article.title | xml_escape }}</title>
+      <description>{{ article.subtitle | xml_escape }}{% if article.excerpt %} {{ article.excerpt | strip_html | xml_escape }}{% endif %}</description>
+      <link>{{ site.url }}{{ site.baseurl }}{{ article.url }}</link>
+      <guid isPermaLink="true">{{ site.url }}{{ site.baseurl }}{{ article.url }}</guid>
+      <pubDate>{{ article.date | date_to_rfc822 }}</pubDate>
+      {% if article.slug %}
+      <enclosure url="{{ site.url }}{{ site.baseurl }}/assets/og/{{ article.slug }}-1200x630.png" type="image/png" length="0"/>
+      <media:content url="{{ site.url }}{{ site.baseurl }}/assets/og/{{ article.slug }}-1200x630.png" medium="image" type="image/png" width="1200" height="630"/>
+      <media:thumbnail url="{{ site.url }}{{ site.baseurl }}/assets/og/{{ article.slug }}-1200x630.png" width="1200" height="630"/>
+      {% endif %}
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

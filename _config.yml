@@ -1,0 +1,51 @@
+# Jekyll Configuration
+title: Counterweight
+tagline: "History has more than one narrator"
+description: "Counter-narratives to the stories nations tell themselves."
+url: "" # Set to your GitHub Pages URL once deployed
+baseurl: "" # Leave empty if using custom domain or username.github.io/counterweight
+
+# Build settings
+markdown: kramdown
+permalink: /articles/:title/
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor
+  - scripts
+  - docs
+  - venv
+  - requirements.txt
+  - "*.py"
+  - "*.sh"
+
+# Collections for articles
+collections:
+  articles:
+    output: true
+    permalink: /articles/:title/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "articles"
+    values:
+      layout: "article"
+
+# Analytics (GoatCounter — privacy-friendly, no cookies)
+# Sign up at https://goatcounter.com and set your site code below.
+# Leave blank to disable. Dashboard will be public at [code].goatcounter.com
+goatcounter: ""  # e.g. "counterweight"
+
+# Plugins (GitHub Pages supported)
+plugins:
+  - jekyll-feed
+
+# Feed settings
+feed:
+  path: feed.xml

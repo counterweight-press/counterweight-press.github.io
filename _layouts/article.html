@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<header class="article-header" {% if page.slug %}style="background-image: url('{{ '/assets/og/' | append: page.slug | append: '-1200x630.png' | relative_url }}')"{% endif %}>
+  <div class="article-header-content">
+    {% if page.kicker %}<span class="article-kicker">{{ page.kicker }}</span>{% endif %}
+    <h1 class="article-title">{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="article-subtitle">{{ page.subtitle }}</p>{% endif %}
+  </div>
+</header>
+
+{% if page.tldr %}
+<details class="article-tldr">
+  <summary class="tldr-label">TL;DR</summary>
+  <p>{{ page.tldr }}</p>
+</details>
+{% endif %}
+
+<article class="article-body">
+{{ content }}
+</article>
+
+{% if page.footnotes %}
+<section class="footnotes-section">
+  <hr class="footnotes-rule">
+  <p class="footnotes-title">Sources &amp; Notes</p>
+  {% for note in page.footnotes %}
+  <div class="footnote" id="fn{{ forloop.index }}">
+    <span class="fn-num"><a href="#ref{{ forloop.index }}">{{ forloop.index }}.</a></span>
+    {{ note }}
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if page.colophon %}
+<div class="colophon">
+  {{ page.colophon }}
+</div>
+{% endif %}
+
+{% include comments.html %}
