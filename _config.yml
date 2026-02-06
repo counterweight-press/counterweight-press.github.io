@@ -40,7 +40,7 @@ defaults:
 # Analytics (GoatCounter — privacy-friendly, no cookies)
 # Sign up at https://goatcounter.com and set your site code below.
 # Leave blank to disable. Dashboard will be public at [code].goatcounter.com
-goatcounter: ""  # e.g. "counterweight"
+goatcounter: "counterweight"
 
 # Plugins (GitHub Pages supported)
 plugins:

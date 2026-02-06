@@ -56,6 +56,3 @@ Footnote references in text:
 Some claim.<sup class="fn-ref"><a href="#fn1" id="ref1">1</a></sup>
 ```
 
-## Comments
-
-Create a comment directory for each article at `_data/comments/your-article-slug/` with a `.gitkeep` file. Comments are submitted via Staticman and appear as YAML files after moderation.
